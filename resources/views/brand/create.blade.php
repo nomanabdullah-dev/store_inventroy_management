@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Categories</h1>
+                <h1 class="m-0">Brands</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('brand.index') }}">Brand</a></li>
                     <li class="breadcrumb-item active">Create</li>
                 </ol>
             </div><!-- /.col -->
@@ -30,17 +30,17 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                           <h4 style="display: inline; margin:0">Create</h4>
-                          <a href="{{ route('category.index') }}" class="btn btn-outline-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                          <a href="{{ route('brand.index') }}" class="btn btn-outline-warning"><i class="fa fa-chevron-left"></i> Back</a>
                         </div>
                       </div>
                     <!-- form start -->
-                    <form action="{{ route('category.store') }}" method="POST">
+                    <form action="{{ route('brand.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Category Name</label>
+                                <label for="name">Brand Name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                                    placeholder="Enter category name" required>
+                                    placeholder="Enter brand name" required>
                                 @error('name')
                                 <span class="text-center" style="color: red">{{ $message }}</span>
                                 @enderror
