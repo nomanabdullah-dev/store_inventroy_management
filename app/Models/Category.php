@@ -10,4 +10,11 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    protected $appends = ['text'];
+
+    public function getTextAttribute()
+    {
+        return $this->name;
+    }
 }

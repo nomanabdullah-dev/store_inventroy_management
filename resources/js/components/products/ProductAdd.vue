@@ -12,9 +12,8 @@
             <form action="" method="POST">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name">Category Name</label>
-                        <input type="text" class="form-control" name="name"
-                            placeholder="Enter category name" required>
+                        <label>Category Name</label>
+                        <Select2 v-model="form.category_id" :options="categories" :settings="{ placeholder: 'Select Category'}"></Select2>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -27,8 +26,29 @@
 </template>
 
 <script>
-    export default {
+import store from '../../store'
+import * as actions from '../../store/action-types'
+import { mapGetters } from 'vuex'
+import Select2 from 'v-select2-component'
 
+    export default {
+        components: {Select2},
+        data() {
+            return {
+                form : {
+                    category_id : 0
+                }
+            }
+        },
+        computed: {
+            ...mapGetters({
+                'categories' : 'getCategories'
+            })
+        },
+        mounted() {
+            //Get categories
+            store.dispatch(actions.GET_CATEGORIES)
+        }
     }
 
 </script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -57,5 +58,16 @@ class CategoryController extends Controller
         $category->delete();
         flash('Category deleted successfully')->success();
         return redirect()->route('category.index');
+    }
+
+
+    //Handle Ajax Request
+    public function getCategoriesJson()
+    {
+        $categories = Category::all();
+        return response()->json([
+            'success'   => true,
+            'data'      => $categories
+        ], Response::HTTP_OK);
     }
 }
