@@ -37,21 +37,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('category.index') }}" class="nav-link active">
+                <a href="{{ route('category.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('brand.index') }}" class="nav-link active">
+                <a href="{{ route('brand.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Brand</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('size.index') }}" class="nav-link active">
+                <a href="{{ route('size.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Size</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('product.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Product</p>
                 </a>
               </li>
               <li class="nav-item">
