@@ -19,7 +19,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::resource('category', CategoryController::class);
     Route::get('/api/categories', [CategoryController::class,'getCategoriesJson']);
+
     Route::resource('brand', BrandController::class);
+    Route::get('/api/brands', [BrandController::class,'getBrandsJson']);
+
     Route::resource('size', SizeController::class);
     Route::resource('product', ProductController::class);
 });

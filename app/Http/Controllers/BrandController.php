@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -57,5 +58,15 @@ class BrandController extends Controller
         $brand->delete();
         flash('Brand deleted successfully')->success();
         return redirect()->route('brand.index');
+    }
+
+    //Handle Ajax Request
+    public function getBrandsJson()
+    {
+        $brands = Brand::all();
+        return response()->json([
+            'success'   => true,
+            'data'      => $brands
+        ], Response::HTTP_OK);
     }
 }

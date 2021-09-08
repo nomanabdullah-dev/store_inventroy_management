@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->decimal('retail_price', 8, 2);
             $table->string('year', 4);
             $table->string('desc');
-            $table->boolean(Product::STATUS_ACTIVE);
+            $table->boolean('status')->default(Product::STATUS_ACTIVE);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
