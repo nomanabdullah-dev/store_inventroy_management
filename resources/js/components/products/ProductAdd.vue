@@ -3,6 +3,7 @@
     <!-- form start -->
     <form @submit.prevent="submitForm" role="form" method="POST">
         <div class="row">
+            <show-error></show-error>
             <div class="col-lg-6">
                 <div class="card card-primary">
                     <div class="card-header">
@@ -32,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label>Image <span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" placeholder="Product image">
+                            <input @change="selectImage" type="file" class="form-control" placeholder="Product image">
                         </div>
                         <div class="form-group">
                             <label>Cost Price($) <span class="text-danger">*</span></label>
@@ -107,14 +108,14 @@
 <script>
     import store from '../../store'
     import * as actions from '../../store/action-types'
-    import {
-        mapGetters
-    } from 'vuex'
+    import { mapGetters } from 'vuex'
     import Select2 from 'v-select2-component'
+    import ShowError from '../utils/ShowError'
 
     export default {
         components: {
-            Select2
+            Select2,
+            ShowError
         },
         data() {
             return {
@@ -153,6 +154,9 @@
             store.dispatch(actions.GET_SIZES)
         },
         methods: {
+            selectImage(e){
+                this.form.image = e.target.files[0]
+            },
             addItem() {
                 let item = {
                     size_id: '',
@@ -165,7 +169,19 @@
                 this.form.items.splice(index, 1)
             },
             submitForm() {
-                console.log(this.form)
+                let data = new FormData();
+                data.append('category_id', this.form.category_id)
+                data.append('brand_id', this.form.brand_id)
+                data.append('sku', this.form.sku)
+                data.append('name', this.form.name)
+                data.append('image', this.form.image)
+                data.append('cost_price', this.form.cost_price)
+                data.append('retail_price', this.form.retail_price)
+                data.append('year', this.form.year)
+                data.append('desc', this.form.desc)
+                data.append('status', this.form.status)
+                data.append('items', this.form.items)
+                store.dispatch(actions.ADD_PRODUCT, data)
             }
         }
     }
