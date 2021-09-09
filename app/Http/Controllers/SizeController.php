@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class SizeController extends Controller
 {
@@ -21,7 +22,7 @@ class SizeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'size' => 'required|min:2|unique:sizes'
+            'size' => 'required|unique:sizes'
         ]);
         Size::create([
             'size' => $request->size
@@ -43,7 +44,7 @@ class SizeController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'size' => 'required|min:2|unique:sizes,size,'.$id
+            'size' => 'required|unique:sizes,size,'.$id
         ]);
         Size::where('id', $id)->update([
             'size' => $request->size
@@ -57,5 +58,15 @@ class SizeController extends Controller
         $size->delete();
         flash('Size deleted successfully')->success();
         return redirect()->route('size.index');
+    }
+
+    //Handle Ajax Request
+    public function getSizesJson()
+    {
+        $sizes = Size::all();
+        return response()->json([
+            'success'   => true,
+            'data'      => $sizes
+        ], Response::HTTP_OK);
     }
 }
