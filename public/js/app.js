@@ -5128,13 +5128,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: {
-        category_id: 0,
-        brand_id: 0,
+        category_id: '',
+        brand_id: '',
         sku: '',
         name: '',
         image: '',
-        cost_price: 0,
-        retail_price: 0,
+        cost_price: '',
+        retail_price: '',
         year: '',
         desc: '',
         status: 1,
@@ -5186,7 +5186,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       data.append('year', this.form.year);
       data.append('desc', this.form.desc);
       data.append('status', this.form.status);
-      data.append('items', this.form.items);
+      data.append('items', JSON.stringify(this.form.items));
       _store__WEBPACK_IMPORTED_MODULE_0__.default.dispatch(_store_action_types__WEBPACK_IMPORTED_MODULE_1__.ADD_PRODUCT, data);
     }
   }
@@ -5587,7 +5587,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({}, _action_types__WEBPACK_IMPORTED_MODULE_0__.ADD_PRODUCT, function (_ref, payload) {
   var commit = _ref.commit;
-  axios__WEBPACK_IMPORTED_MODULE_2___default().post('/product', payload).then(function (res) {})["catch"](function (err) {
+  axios__WEBPACK_IMPORTED_MODULE_2___default().post('/product', payload).then(function (res) {
+    if (res.data.success == true) {
+      window.location.href = '/product';
+    }
+  })["catch"](function (err) {
     //console.log(err.response.data.errors)
     commit(_mutation_types__WEBPACK_IMPORTED_MODULE_1__.SET_ERRORS, err.response.data.errors);
   });
@@ -42136,7 +42140,10 @@ var staticRenderFns = [
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "btn btn-outline-warning", attrs: { href: "" } },
+            {
+              staticClass: "btn btn-outline-warning",
+              attrs: { to: "/product" }
+            },
             [_c("i", { staticClass: "fa fa-chevron-left" }), _vm._v(" Back")]
           )
         ]

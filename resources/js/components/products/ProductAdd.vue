@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h4 style="display: inline; margin:0">Create</h4>
-                            <a href="" class="btn btn-outline-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                            <a to="/product" class="btn btn-outline-warning"><i class="fa fa-chevron-left"></i> Back</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -120,13 +120,13 @@
         data() {
             return {
                 form: {
-                    category_id: 0,
-                    brand_id: 0,
+                    category_id: '',
+                    brand_id: '',
                     sku: '',
                     name: '',
                     image: '',
-                    cost_price: 0,
-                    retail_price: 0,
+                    cost_price: '',
+                    retail_price: '',
                     year: '',
                     desc: '',
                     status: 1,
@@ -180,7 +180,7 @@
                 data.append('year', this.form.year)
                 data.append('desc', this.form.desc)
                 data.append('status', this.form.status)
-                data.append('items', this.form.items)
+                data.append('items', JSON.stringify(this.form.items))
                 store.dispatch(actions.ADD_PRODUCT, data)
             }
         }
