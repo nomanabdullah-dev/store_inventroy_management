@@ -57,9 +57,15 @@ class StockController extends Controller
                 $psq->save();
             }
         }
+
         flash('Stock updated successfylly')->success();
         return response()->json([
             'success' => true
         ], Response::HTTP_OK);
+    }
+
+    public function stockHistory(){
+        $stocks = ProductStock::with(['product','size'])->orderBy('created_at', 'DESC')->get();
+        return view('stock.history', compact('stocks'));
     }
 }

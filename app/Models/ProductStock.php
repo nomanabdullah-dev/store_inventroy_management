@@ -11,4 +11,15 @@ class ProductStock extends Model
 
     public const STOCK_IN   = 'in';
     public const STOCK_OUT  = 'out';
+
+    //relation
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
+    }
 }

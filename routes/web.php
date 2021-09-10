@@ -32,4 +32,5 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     Route::get('/stock', [StockController::class, 'stock'])->name('stock');
     Route::post('/stocks', [StockController::class, 'stockSubmit'])->name('stockSubmit');
+    Route::get('/stocks/history', [StockController::class, 'stockHistory'])->name('stockHistory');
 });
