@@ -10,3 +10,5 @@ export const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 export const GET_PRODUCTS   = 'GET_PRODUCTS'
 //Stock
 export const SUBMIT_STOCK   = 'SUBMIT_STOCK'
+//Return Prduct
+export const SUBMIT_RETURN_PRODCUT = 'SUBMIT_RETURN_PRODCUT'

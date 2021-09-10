@@ -6,6 +6,7 @@ import Home from './components/Home.vue'
 import ProductAdd from './components/products/ProductAdd.vue'
 import ProductEdit from './components/products/ProductEdit.vue'
 import StockManage from './components/stocks/StockManage.vue'
+import ReturnProduct from './components/return_products/ReturnProduct.vue'
 import store from './store'
 
 
@@ -19,7 +20,8 @@ const app = new Vue({
         Home,
         ProductAdd,
         ProductEdit,
-        StockManage
+        StockManage,
+        ReturnProduct
     },
     store
 })
