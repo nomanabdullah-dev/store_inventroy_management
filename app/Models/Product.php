@@ -15,11 +15,16 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['product_image'];
+    protected $appends = ['product_image', 'text'];
     //methods
     public function getProductImageAttribute()
     {
         return asset('storage/product_images/'.$this->image);
+    }
+
+    public function getTextAttribute()
+    {
+        return $this->name;
     }
 
 

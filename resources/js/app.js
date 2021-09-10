@@ -5,6 +5,7 @@ import Alpine from 'alpinejs';
 import Home from './components/Home.vue'
 import ProductAdd from './components/products/ProductAdd.vue'
 import ProductEdit from './components/products/ProductEdit.vue'
+import StockManage from './components/stocks/StockManage.vue'
 import store from './store'
 
 
@@ -17,7 +18,8 @@ const app = new Vue({
     components: {
         Home,
         ProductAdd,
-        ProductEdit
+        ProductEdit,
+        StockManage
     },
     store
 })

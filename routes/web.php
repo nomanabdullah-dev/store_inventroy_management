@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,4 +28,8 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/api/sizes', [SizeController::class,'getSizesJson']);
 
     Route::resource('product', ProductController::class);
+    Route::get('/api/products', [ProductController::class,'getProductsJson']);
+
+    Route::get('/stock', [StockController::class, 'stock'])->name('stock');
+    Route::post('/stocks', [StockController::class, 'stockSubmit'])->name('stockSubmit');
 });

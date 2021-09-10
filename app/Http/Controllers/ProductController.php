@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\ProductSizeStock;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Http\Client\Response;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Auth;
@@ -132,6 +132,7 @@ class ProductController extends Controller
         $product->status        = $request->status;
 
         if($request->hasFile('image')){
+            unlink('storage/product_images/'.$product->image);
             $image              = $request->image;
             $name               = Str::random(60) . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/product_images', $name);
@@ -166,5 +167,16 @@ class ProductController extends Controller
         $product->delete();
         flash('Product deleted successfully')->success();
         return redirect()->back();
+    }
+
+
+    //Handle Ajax Request
+    public function getProductsJson()
+    {
+        $products = Product::with(['product_stocks.size'])->get();
+        return response()->json([
+            'success'   => true,
+            'data'      => $products
+        ], Response::HTTP_OK);
     }
 }
