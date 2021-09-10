@@ -14,4 +14,19 @@ class Product extends Model
     public const STATUS_INACTIVE = 0;
 
     protected $guarded = [];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function product_stocks()
+    {
+        return $this->hasMany(ProductSizeStock::class);
+    }
 }

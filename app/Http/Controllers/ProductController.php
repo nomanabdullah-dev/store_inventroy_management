@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::with(['category', 'brand'])->get();
         return view('product.index', compact('products'));
     }
 
@@ -84,7 +84,10 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+        $product = Product::where('id', $id)
+                        ->with(['category', 'brand', 'product_stocks.size'])
+                        ->first();
+        return view('product.show', compact('product'));
     }
 
     public function edit(Product $product)

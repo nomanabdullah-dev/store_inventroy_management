@@ -35,7 +35,11 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
+                                    <th class="text-center">Image</th>
                                     <th>Name</th>
+                                    <th>SKU</th>
+                                    <th>Category</th>
+                                    <th>Brand</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,8 +47,16 @@
                                 @foreach ($products as $key=> $item)
                                 <tr>
                                     <td>{{ ++$key }}</td>
+                                    <td class="text-center">
+                                        <img src="{{ asset('storage/product_images/'.$item->image) }}" width="80px">
+                                    </td>
                                     <td>{{ $item->name }}</td>
+                                    <td>{{ $item->sku ?? '' }}</td>
+                                    <td>{{ $item->category->name ?? '' }}</td>
+                                    <td>{{ $item->brand->name ?? '' }}</td>
                                     <td>
+                                        <a href="{{ route('product.show', $item->id) }}" class="btn btn-sm btn-info"><i class="fa fa-desktop"></i> Show</a>
+
                                         <a href="{{ route('product.edit', $item->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
 
                                         <a href="javascript:;" class="btn btn-sm btn-danger swt-delete" data-form-id="product-delete-{{ $item->id }}">
