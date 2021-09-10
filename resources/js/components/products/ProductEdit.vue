@@ -8,7 +8,7 @@
                 <div class="card card-primary">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 style="display: inline; margin:0">Create</h4>
+                            <h4 style="display: inline; margin:0">Edit</h4>
                             <a to="/product" class="btn btn-outline-warning"><i class="fa fa-chevron-left"></i> Back</a>
                         </div>
                     </div>
@@ -33,6 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label>Image <span class="text-danger">*</span></label>
+                            <img :src="product.product_image" class="old_img">
                             <input @change="selectImage" type="file" class="form-control" placeholder="Product image">
                         </div>
                         <div class="form-group">
@@ -58,7 +59,6 @@
                         <div class="form-group">
                             <label>Status <span class="text-danger">*</span></label>
                             <select class="form-control" v-model="form.status">
-                                <option value="">Select Status</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
@@ -118,6 +118,7 @@
             Select2,
             ShowError
         },
+        props: ['product'],
         data() {
             return {
                 form: {
@@ -153,6 +154,18 @@
             store.dispatch(actions.GET_BRANDS)
             //Get sizes
             store.dispatch(actions.GET_SIZES)
+
+            //set old data
+            this.form.category_id   = this.product.category_id
+            this.form.brand_id      = this.product.brand_id
+            this.form.sku           = this.product.sku
+            this.form.name          = this.product.name
+            this.form.cost_price    = this.product.cost_price
+            this.form.retail_price  = this.product.retail_price
+            this.form.year          = this.product.year
+            this.form.desc          = this.product.desc
+            this.form.status        = this.product.status
+            this.form.items         = this.product.product_stocks
         },
         methods: {
             selectImage(e){
@@ -171,6 +184,7 @@
             },
             submitForm() {
                 let data = new FormData();
+                data.append('_method', 'PUT')
                 data.append('category_id', this.form.category_id)
                 data.append('brand_id', this.form.brand_id)
                 data.append('sku', this.form.sku)
@@ -182,13 +196,21 @@
                 data.append('desc', this.form.desc)
                 data.append('status', this.form.status)
                 data.append('items', JSON.stringify(this.form.items))
-                store.dispatch(actions.ADD_PRODUCT, data)
+
+                let payload = {
+                    data: data,
+                    id: this.product.id
+                }
+
+                store.dispatch(actions.UPDATE_PRODUCT, payload)
             }
         }
     }
 
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+    .old_img{
+        width: 100px;
+    }
 </style>

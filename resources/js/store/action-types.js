@@ -6,3 +6,4 @@ export const GET_BRANDS = 'GET_BRANDS'
 export const GET_SIZES = 'GET_SIZES'
 // product
 export const ADD_PRODUCT = 'ADD_PRODUCT'
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT'

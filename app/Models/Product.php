@@ -15,6 +15,15 @@ class Product extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['product_image'];
+    //methods
+    public function getProductImageAttribute()
+    {
+        return asset('storage/product_images/'.$this->image);
+    }
+
+
+    //relations
     public function category()
     {
         return $this->belongsTo(Category::class);

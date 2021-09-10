@@ -4,6 +4,7 @@ window.Vue = require('vue').default;
 import Alpine from 'alpinejs';
 import Home from './components/Home.vue'
 import ProductAdd from './components/products/ProductAdd.vue'
+import ProductEdit from './components/products/ProductEdit.vue'
 import store from './store'
 
 
@@ -15,7 +16,8 @@ const app = new Vue({
     el: '#app',
     components: {
         Home,
-        ProductAdd
+        ProductAdd,
+        ProductEdit
     },
     store
 })
