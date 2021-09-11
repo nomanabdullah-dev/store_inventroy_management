@@ -37,6 +37,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{ route('user.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('category.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
@@ -93,13 +99,15 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a href="{{ route('logout') }}" class="nav-link"
+                         onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                   <i class="nav-icon fas fa-power-off"></i> {{ __('Log Out') }}
+                </a>
+            </form>
           </li>
         </ul>
       </nav>
