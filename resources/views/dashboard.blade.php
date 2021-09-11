@@ -29,7 +29,7 @@
                         <p>Users</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-users"></i>
                     </div>
                     <a href="{{ route('user.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -44,7 +44,7 @@
                         <p>Products</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fa fa-list"></i>
                     </div>
                     <a href="{{ route('product.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -59,7 +59,7 @@
                         <p>Stocks In</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="fa fa-cart-plus"></i>
                     </div>
                     <a href="{{ route('stockHistory') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -74,7 +74,7 @@
                         <p>Return Products</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-book"></i>
                     </div>
                     <a href="{{ route('returnProductkHistory') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -98,7 +98,7 @@
                                     <th>SKU</th>
                                     <th>Category</th>
                                     <th>Brand</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,13 +106,13 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td class="text-center">
-                                        <img src="{{ asset('storage/product_images/'.$item->image) }}" width="80px">
+                                        <img src="{{ asset('storage/product_images/'.$item->image) }}" width="60px" max-height="60px">
                                     </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->sku ?? '' }}</td>
                                     <td>{{ $item->category->name ?? '' }}</td>
                                     <td>{{ $item->brand->name ?? '' }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ route('product.show', $item->id) }}" class="btn btn-sm btn-info"><i class="fa fa-desktop"></i> Show</a>
 
                                         <a href="{{ route('product.edit', $item->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>

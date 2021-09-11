@@ -40,7 +40,7 @@
                                     <th>SKU</th>
                                     <th>Category</th>
                                     <th>Brand</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +54,7 @@
                                     <td>{{ $item->sku ?? '' }}</td>
                                     <td>{{ $item->category->name ?? '' }}</td>
                                     <td>{{ $item->brand->name ?? '' }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ route('product.show', $item->id) }}" class="btn btn-sm btn-info"><i class="fa fa-desktop"></i> Show</a>
 
                                         <a href="{{ route('product.edit', $item->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>

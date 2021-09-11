@@ -10,18 +10,6 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -29,77 +17,71 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-list"></i>
               <p>
-                Starter Pages
+                Menus
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'active':'' }}">
+                  <i class="fa fa-home nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('user.index') }}" class="nav-link {{ request()->is('user*') ? 'active':'' }}">
+                  <i class="fa fa-users nav-icon"></i>
                   <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('category.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('category.index') }}" class="nav-link {{ request()->is('category*') ? 'active':'' }}">
+                  <i class="fa fa-list nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('brand.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('brand.index') }}" class="nav-link {{ request()->is('brand*') ? 'active':'' }}">
+                  <i class="fa fa-list nav-icon"></i>
                   <p>Brand</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('size.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('size.index') }}" class="nav-link {{ request()->is('size*') ? 'active':'' }}">
+                  <i class="fa fa-list nav-icon"></i>
                   <p>Size</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('product.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('product.index') }}" class="nav-link {{ request()->is('product*') ? 'active':'' }}">
+                  <i class="fa fa-list nav-icon"></i>
                   <p>Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('stock') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('stock') }}" class="nav-link {{ request()->is('stock') ? 'active':'' }}">
+                  <i class="fa fa-cart-plus nav-icon"></i>
                   <p>Stock</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('stockHistory') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('stockHistory') }}" class="nav-link {{ request()->is('stocks/history*') ? 'active':'' }}">
+                  <i class="fa fa-book nav-icon"></i>
                   <p>Stock History</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('returnProduct') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('returnProduct') }}" class="nav-link {{ request()->is('return-product') ? 'active':'' }}">
+                  <i class="fa fa-list nav-icon"></i>
                   <p>Return Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('returnProductkHistory') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{ route('returnProductkHistory') }}" class="nav-link {{ request()->is('return-product/history*') ? 'active':'' }}">
+                  <i class="fa fa-book nav-icon"></i>
                   <p>Return Product History</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
                 </a>
               </li>
             </ul>

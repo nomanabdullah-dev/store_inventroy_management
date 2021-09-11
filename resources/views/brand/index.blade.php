@@ -36,7 +36,7 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Name</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ route('brand.edit', $item->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
 
                                         <a href="javascript:;" class="btn btn-sm btn-danger swt-delete" data-form-id="brand-delete-{{ $item->id }}">

@@ -38,7 +38,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Created At</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +48,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }} @if(auth()->id() == $item->id) <span class="badge badge-success">you</span>@endif</td>
                                     <td>{{ $item->created_at->format('d-M-yy') }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ route('user.edit', $item->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
 
                                         @if(auth()->id() != $item->id)
